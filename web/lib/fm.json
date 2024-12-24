@@ -1,0 +1,17 @@
+{
+    "calc12": {
+        "dirLocation": "/Calc12/directory.json",
+        "title": "Calculus 12",
+        "description": "BC Provincial Calculus"
+    },
+    "phys12": {
+        "dirLocation": "/Phys12/directory.json",
+        "title": "Physics 12",
+        "description": "BC Provincial Physics"
+    },
+    "macmsource": {
+        "dirLocation": "/macmsource/directory.json",
+        "title": "MACMobsidian",
+        "description": "MACMobsidian"
+    }
+}

@@ -1,0 +1,437 @@
+/* PLEASE DON'T JUDGE MY CSS I MADE THIS IN 30 MINUTES */
+
+/* GENERAL */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.content {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    margin-top: 55px;
+    padding: 0 20px;
+}
+
+h1 {
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 16px;
+    font-size: 35px;
+}
+
+#brand {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+#brand:hover {
+    cursor: pointer;
+}
+
+h2 {
+    font-weight: 500;
+    margin: 25px 0 15px 0;
+    font-size: 23px;
+    color: #a63737;
+}
+
+h3.text {
+    font-weight: 500;
+    margin: 25px 0 15px 0;
+    font-size: 22px;
+    color: #b35d00;
+}
+
+hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 2px solid #e0e0e0;
+}
+
+span,p,a {
+    font-size: 20px;
+}
+
+ul {
+    margin: 0 0 16px 0;
+}
+
+ul>li {
+    margin: 5px 0;
+}
+
+ul>li::marker {
+    color: #854b00
+}
+
+a {
+    color: #007994;
+    text-decoration: underline;
+}
+
+.nonlink,
+.nonlink>a {
+    color: #000000;
+    text-decoration: none;
+}
+
+h1,h2,h3,em,span,p,a,select {
+    font-family: 'Avenir', 'Avenir Next', sans-serif;
+}
+
+
+
+/* SORTER */
+#sorter {
+    text-align: end;
+}
+
+#sorter p {
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+#sorter select {
+    display: inline-block;
+    border: none;
+    background: unset;
+    font-size: 18px;
+    font-weight: bold;
+    width: fit-content;
+    outline: 0;
+    color: #000000;
+}
+
+#sorter select:hover {
+   cursor: pointer; 
+   color: #000000;
+}
+
+
+
+/* LOADER */
+/* yoinked from https://css-loaders.com/spinner/ */
+.loader {
+    display: block;
+    margin: 15px auto;
+    width: 50px;
+    padding: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #000000;
+    --_m: 
+      conic-gradient(#0000 10%,#000),
+      linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+    animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
+
+#lists,
+#files,
+#fmTitle,
+#loadError,
+body.onload .loader,
+body.onerror .loader {
+    display: none;
+}
+
+body.onload #lists,
+body.onload #files,
+body.onload #fmTitle,
+.loader {
+    display: block;
+}
+
+body.onerror #loadError {
+    display: block;
+}
+
+
+
+/* LISTS */
+.category {
+    display: block;
+}
+
+.category:not(:last-child) {
+    margin-bottom: 35px;
+}
+
+.category h2,
+.category h3,
+.category p {
+    margin: 0;
+}
+
+.category h2 {
+    margin-bottom: 10px;
+}
+
+.category>.subject {
+    background-color: #e8e8e8;
+    border-radius: 12px;
+    padding: 15px 40px 12px 24px;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    color: #000000;
+}
+
+.category>.subject:hover {
+    background-color: #d4d4d4;
+    cursor: pointer;
+}
+
+.category>.subject::after {
+    content: url(./right.svg);
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: auto 0;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+}
+
+.category>.subject:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.category>.subject p.subjectName {
+    font-size: 18px;
+}
+
+.category>.subject h3.subjectCode {
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 3px;
+}
+
+.category>.subject .flair {
+    display: inline-block;
+    font-size: 16px;
+    background-color: #cfcfcf;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.category>.subject .flair[data-flaircolour="yellow"] {
+    background-color: #d2ce85;
+}
+
+.category>.subject .flair[data-flaircolour="red"] {
+    background-color: #e2a1a1;
+}
+
+
+
+/* FILES */
+
+#files>.item {
+    box-sizing: border-box;
+    background-color: #e8e8e8;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 13px 0;
+    padding: 10px 5px 10px 70px;
+    position: relative;
+    border-radius: 12px;
+    min-height: 86px;
+    color: #000000;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 600px) {
+    #files>.item {
+        width: calc(33% - 6.67px);
+    }
+
+    #files>.item:not(:nth-child(3n)) {
+        margin-right: 10px;
+    }
+}
+
+#files>.item:hover {
+    background-color: #d4d4d4;
+    cursor: pointer;
+}
+
+
+#files>.item>.identifiers::before {
+    content: url(./filetypes/unknown.svg);
+    position: absolute;
+    display: inline-block;
+    left: 10px;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    width: 50px;
+}
+
+#files>.item>.identifiers.pdf::before {
+    content: url(./filetypes/pdf.svg);
+}
+
+#files>.item>.identifiers.directory::before {
+    content: url(./filetypes/directory.svg);
+}
+
+#files>.item>.identifiers.md::before {
+    content: url(./filetypes/md.svg);
+}
+
+#files>.item>.identifiers.png::before,
+#files>.item>.identifiers.jpg::before,
+#files>.item>.identifiers.jpeg::before,
+#files>.item>.identifiers.webp::before {
+    content: url(./filetypes/image.svg);
+}
+
+#files>.item>.identifiers.return::before {
+    content: url(./filetypes/return.svg);
+}
+
+#files>.item>.identifiers {
+    display: flex;
+    flex-direction: column;
+}
+
+#files>.item>.identifiers p {
+    margin: 0;
+}
+
+#files>.item>.identifiers p.name {
+    font-weight: bold;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
+}
+
+#files>.item:hover>.identifiers p.name {
+    white-space: initial;
+}
+
+#files>.item>.identifiers p.size,
+#files>.item>.identifiers p.date {
+    font-size: 15px;
+}
+
+
+
+/* SPECIAL BUTTONS */
+.button {
+    display: inline-block;
+    margin: 0;
+    padding: 7px 14px;
+    border-radius: 14px;
+    text-decoration: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    filter: brightness(85%);
+}
+
+.button.disabled {
+    cursor: not-allowed;
+    filter: brightness(65%);
+}
+
+.button:not(.button:last-child) {
+    margin-right: 7px;
+    margin-bottom: 7px;
+}
+
+.button[data-btncolour="yellow"] {
+    background-color: #e39047;
+    color: #FFFFFF
+}
+
+.button[data-btncolour="blue"] {
+    background-color: #4B4376;
+    color: #FFFFFF
+}
+
+.button[data-btncolour="red"] {
+    background-color: #AE445A;
+    color: #FFFFFF
+}
+
+.button>p {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+/* FOOTER */
+footer {
+    margin-bottom: 200px;
+}
+
+footer #bottomFooter {
+    margin-top: 8px;
+}
+
+footer #bottomFooter>* {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+footer #bottomFooter #footerBrand {
+    color: #000000;
+    text-decoration: none;
+}
+
+footer #bottomFooter>* >a:not(#footerBrand) {
+    font-size: 18px;
+    color: #a9a9a9;
+}
+
+footer #bottomFooter>* >a:not(#footerBrand):hover {
+    color: #707070;
+    cursor: pointer;
+}
+
+footer #bottomFooter>* >a.disabled:not(#footerBrand) {
+    color: #383838;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+footer #bottomFooter>*:not(footer #bottomFooter>*:last-child) {
+    margin-right: 10px;
+}
+
+footer #bottomFooter>*:not(footer #bottomFooter>*:first-child)::before {
+    content: '·';
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 530px) {
+    footer #bottomFooter>*:not(#footerBrand) {
+        display: block;
+    }
+}
