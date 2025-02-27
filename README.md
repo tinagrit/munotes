@@ -54,8 +54,9 @@ The file manager shows the UI for the **web** type of notes.
 }
 ```
 - Once a match is found, it fetches the `dirLocation` JSON and shows the top layer files.
+- The `directory.json` file is automatically generated using the [`fmGen.py`](/web/lib/fmGen.py) file.
 - The `directory.json` syntax is shown below:
-```json
+```js
 [
     { // file
         "type": "file",
