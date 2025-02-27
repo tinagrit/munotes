@@ -1,5 +1,5 @@
 # MUNOTES _**BETA**_
-is a platform to share my notes with my peers. 
+Platform to share my university notes with peers. 
 
 ### Table of Contents
 1. [Note sharing](#note-sharing)
@@ -9,9 +9,9 @@ is a platform to share my notes with my peers.
 5. [Credits](#credits)
 ___
 ### Note sharing
-There are 2 main ways notes are being shared on this website.
+There are 2 main ways of presenting notes on this website.
 
-1. **Web** - notes can be directly downloaded, ususally in PDF. The UI is a custom-made file manager.
+1. **Web** - notes are directly shown as files, usually PDF, through a custom-made file manager.
 2. **Obsidian** - notes are shown online using the plugin [Webpage HTML Export](https://github.com/KosmosisDire/obsidian-webpage-export) via the note-taking app [Obsidian](https://obsidian.md).
 ___
 ### Course manager
@@ -19,7 +19,7 @@ The course manager is the main page of the website.
 - The HTML is at [`/home.html`](/home.html).
 - The JavaScript [`coursemanager.js`](/web/lib/coursemanager.js) fetches the course list at [`/courses.json`](/courses.json) and shows them on the page.
 - The [`/courses.json`](/courses.json) syntax is shown below:
-```json
+```js
 [
     {
         "name": "Course Code, i.e. MATH 151",
@@ -44,7 +44,7 @@ The file manager shows the UI for the **web** type of notes.
 - The HTML is at [`/web/fm.html`](/web/fm.html).
 - The JavaScript [`filemanager.js`](/web/lib/filemanager.js) takes the `search` URL GET parameter then fetches to find a match at [`/web/lib/fm.json`](/web/lib/fm.json).
 - The [`/web/lib/fm.json`](/web/lib/fm.json) syntax is shown below:
-```json
+```js
 {
     "URL search name, i.e. math151": {
         "dirLocation": "directory.json", // JSON for course directory
