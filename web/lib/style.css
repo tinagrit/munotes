@@ -1,10 +1,13 @@
-/* PLEASE DON'T JUDGE MY CSS I MADE THIS IN 30 MINUTES */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 /* GENERAL */
 body {
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
+}
+.hidden {
+    display: none;
 }
 
 .content {
@@ -29,7 +32,16 @@ h1 {
     margin-bottom: 0;
 }
 
-#brand:hover {
+#brandImg {
+    height: 25px;
+}
+
+.theme-dark #brandImg {
+    filter: invert(94%) sepia(11%) saturate(664%) hue-rotate(321deg) brightness(116%) contrast(94%);
+}
+
+#brand:hover,
+#brandImg:hover {
     cursor: pointer;
 }
 
@@ -80,8 +92,8 @@ a {
     text-decoration: none;
 }
 
-h1,h2,h3,em,span,p,a,select {
-    font-family: 'Avenir', 'Avenir Next', sans-serif;
+h1,h2,h3,em,span,p,a,select,input,.err,#errs>* {
+    font-family: 'Avenir', 'Avenir Next', 'Lato', sans-serif;
 }
 
 
@@ -154,6 +166,20 @@ body.onload #fmTitle,
 
 body.onerror #loadError {
     display: block;
+}
+
+
+
+/* CALLOUT */
+.callout-yellow {
+    background-color: #f1ed82;
+    border-radius: 12px;
+    padding: 8px 24px 8px 24px;
+    margin-bottom: 20px;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    color: #000000;
 }
 
 
@@ -434,4 +460,97 @@ footer #bottomFooter>*:not(footer #bottomFooter>*:first-child)::before {
     footer #bottomFooter>*:not(#footerBrand) {
         display: block;
     }
+}
+
+/* form */
+form .errorcontainer {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+form .err {
+    color:rgb(204, 0, 0);
+    font-size: 16px;
+    margin-top: 10px;
+}
+form .err a,
+form .errorcontainer a {
+    font-size: initial;
+}
+form .err ul {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 2em;
+}
+form.authForm {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+}
+form .inputblock {
+    margin-bottom: 25px;
+}
+form label p {
+    margin-bottom: 6px;
+}
+form input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 18px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+form .btn {
+    width: 100%;
+    max-width: 100%;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #4C6E2B;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    background-color: #5D8736;
+    color: white;
+    position: relative;
+}
+form .btn .whileloading {
+    display: none;
+}
+form .btn.loading .normal {
+    opacity: 0;
+}
+form .btn.loading .whileloading {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+}
+form .btn.loading .loader {
+    display: inline-block;
+
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    border: none;
+    background-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+form .btn.loading,
+form .btn:hover {
+    background-color: #4C6E2B;
+}
+form .bottomLinks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
