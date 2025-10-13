@@ -65,6 +65,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background-primary);
+    transition: background, background-color, border;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 .hidden {
     display: none;
@@ -94,6 +97,11 @@ h1 {
 
 #brandImg {
     height: 25px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
 }
 
 .theme-dark #brandImg {
@@ -189,7 +197,7 @@ h1,h2,h3,em,span,p,a,select,input,.err,#errs>* {
 
 
 /* LOADER */
-/* yoinked from https://css-loaders.com/spinner/ */
+/* from https://css-loaders.com/spinner/ */
 .loader {
     display: block;
     margin: 15px auto;
@@ -199,7 +207,7 @@ h1,h2,h3,em,span,p,a,select,input,.err,#errs>* {
     border-radius: 50%;
     background: var(--text-normal);
     --_m: 
-      conic-gradient(var(--text-normal) 10%,var(--text-normal)),
+      conic-gradient(#0000 10%,var(--text-normal)),
       linear-gradient(var(--text-normal) 0 0) content-box;
     -webkit-mask: var(--_m);
             mask: var(--_m);
@@ -272,6 +280,9 @@ body.onerror #loadError {
     text-decoration: none;
     display: block;
     color: var(--text-normal);
+    transition: background, background-color, border;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 
 .category>.subject:hover {
@@ -319,6 +330,9 @@ body.onerror #loadError {
     border-radius: 8px;
     font-weight: bold;
     margin-bottom: 3px;
+    transition: background, background-color, border;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
 
 .category>.subject .flair[data-flaircolour="yellow"] {
@@ -619,4 +633,116 @@ form .bottomLinks {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+}
+
+
+
+/* theme toggle */
+/* modified from https://github.com/KosmosisDire/obsidian-webpage-export */
+
+.theme-toggle-container {
+    --toggle-width: 3.5em;
+    --toggle-height: 1.75em;
+    --border-radius: calc(var(--toggle-height) / 2);
+    --handle-width: calc(var(--toggle-height) * 0.65);
+    --handle-radius: calc(var(--handle-width) / 2);
+    --handle-margin: calc((var(--toggle-height) / 2.0) - var(--handle-radius));
+    --handle-translation: calc(var(--toggle-width) - var(--handle-width) - (var(--handle-margin) * 2));
+    display: inline-block;
+    cursor: pointer;
+}
+
+.theme-toggle-input {
+    display: none;
+    z-index: 1000;
+    appearance: none;
+    border-radius: var(--checkbox-radius);
+    border: 1px solid var(--checkbox-border-color);
+    padding: 0;
+    margin: 0;
+    margin-inline-end: 6px;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    position: relative;
+    transition: box-shadow .15s ease-in-out 0s;
+    background-color: var(--checkbox-color);
+    border-color: var(--checkbox-color);
+}
+
+.toggle-background {
+    position: relative;
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    border-radius: var(--border-radius);
+    background-color: var(--background-modifier-border);
+    transition: background-color var(--color-fade-speed);
+    z-index: 1000;
+    animation-duration: .2s;
+}
+
+.theme-toggle-input:checked~.toggle-background::before {
+    animation: toggle-slide-right ease-in-out normal both;
+    animation-duration: inherit;
+}
+
+.toggle-background::before {
+    content: "";
+    position: absolute;
+    left: var(--handle-margin);
+    top: var(--handle-margin);
+    height: var(--handle-width);
+    width: var(--handle-width);
+    border-radius: var(--handle-radius);
+    background-color: var(--text-normal);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
+    animation: toggle-slide-left ease-in-out normal both;
+    animation-duration: inherit;
+    z-index: 1000;
+}
+
+.theme-toggle-input:checked~.toggle-background::after {
+    transform: translateX(calc(var(--handle-translation) * -1)) scale(.9);
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>') no-repeat center center;
+}
+
+.toggle-background::after {
+    content: "";
+    position: absolute;
+    right: var(--handle-margin);
+    top: calc(var(--handle-margin));
+    height: var(--handle-width);
+    width: var(--handle-width);
+    transition: transform .3s;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>') no-repeat center center;
+    transform: scale(.9);
+}
+
+@keyframes toggle-slide-right {
+    0% {
+    width: var(--handle-width);
+    transform: translateX(0);
+    }
+    50% {
+        width: calc(var(--toggle-width) * .5);
+    }
+    90% {
+        width: var(--handle-width);
+    }
+    100% {
+        transform: translateX(var(--handle-translation));
+    }
+}
+
+@keyframes toggle-slide-left {
+    0% {
+    width: var(--handle-width);
+    transform: translateX(calc(var(--handle-translation) - ((var(--toggle-width) * .33) - var(--handle-width))));
+    }
+    70% {
+    width: calc(var(--toggle-width) * .5);
+    }
+    100% {
+        width: var(--handle-width);
+        transform: translateX(0);
+    }
 }

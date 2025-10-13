@@ -14,12 +14,15 @@
     <meta name="language" content="English">
     <meta name="author" content="Mu Leelawat">
 </head>
-<body onload="cmInit('./courses.json',sorter=document.getElementById('sorterInput'))" class="theme-light">
+<body onload="cmInit('./courses.json',sorter=document.getElementById('sorterInput'))" class="">
     <style>
         /* external css */
     </style>
     <div class="content">
-        <img id="brandImg" onclick="location.href = '/home.html'" src="/web/lib/long.svg" alt="munotes">
+        <div class="header">
+            <img id="brandImg" onclick="location.href = '/home.html'" src="/web/lib/long.svg" alt="munotes">
+            <label class="theme-toggle-container" for="theme_toggle"><input class="theme-toggle-input is-checked" type="checkbox" id="theme_toggle"><div class="toggle-background"></div></label>
+        </div> 
         <hr>
         <div id="sorter">
             <p>Sort by:</p>
@@ -55,5 +58,6 @@
         </footer>
     </div>
     <script src="/web/lib/coursemanager.js"></script>
+    <script src="/web/lib/ui.js"></script>
 </body>
 </html>
