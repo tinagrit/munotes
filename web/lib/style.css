@@ -1,10 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+.theme-light {
+  --background-primary: #f8f8f8;
+  --background-primary-alt: #c9c9c9;
+  --background-secondary: #e2e2e2;
+  --background-secondary-alt: #cecece;
+  --background-modifier-border: #e0e0e0;
+  --text-normal: #111111;
+  --text-muted: #707070;
+  --text-faint: #a9a9a9;
+  --text-selection: #b0dee9; /* Chromium precess this color with alpha channel */
+  --text-on-accent: #854b00;
+  --interactive-normal: #3784e1;
+
+  --flair-red: #e2a1a1;
+  --flair-yellow: #d2ce85;
+
+  --text-title-h1:              #000000;
+  --text-title-h2:              #a63737;
+  --text-title-h3:              #b35d00;
+  --text-title-h4:              #007994;
+  --text-title-h5:              #008321;
+  --text-title-h6:              #9fb2ff;
+  --inline-code:                #03107B;
+  --code-block:                 #03107B;
+  --pre-code:                   #ebebeb;
+  --blockquote-background:      #ebebeb;
+  --pre-code-bg:                #ebebeb;
+  --blockquote-border:          #ffb86c;
+}
+
+.theme-dark {
+  --background-primary: #282a36;
+  --background-primary-alt: #343644;
+  --background-secondary: #44475a;
+  --background-secondary-alt: #363846;
+  --background-modifier-border: #7dc2ff;
+  --text-normal: #f8f8f2;
+  --text-muted: #f8f8f2;
+  --text-faint: #c4c4c4;
+  --text-selection: #6272a4; /* Chromium precess this color with alpha channel */
+  --text-on-accent: #ffe2bb;
+  --interactive-normal: #3784e1;
+
+  --flair-red: #974747;
+  --flair-yellow: #777436;
+
+  --text-title-h1:              #c6fffe;
+  --text-title-h2:              #ff7979;
+  --text-title-h3:              #ffb86c;
+  --text-title-h4:              #8be9fd;
+  --text-title-h5:              #50fa7b;
+  --text-title-h6:              #9fb2ff;
+  --inline-code:                #9fb2ff;
+  --code-block:                 #AADAFA;
+  --pre-code:                   #1F1F1F;
+  --pre-code-bg:                #1F1F1F;
+  --blockquote-background:      #44475a;
+  --blockquote-border:          #ffb86c;
+}
+
 /* GENERAL */
 body {
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: var(--background-primary);
 }
 .hidden {
     display: none;
@@ -49,20 +109,20 @@ h2 {
     font-weight: 500;
     margin: 25px 0 15px 0;
     font-size: 23px;
-    color: #a63737;
+    color: var(--text-title-h2);
 }
 
 h3.text {
     font-weight: 500;
     margin: 25px 0 15px 0;
     font-size: 22px;
-    color: #b35d00;
+    color: var(--text-title-h3);
 }
 
 hr {
     margin: 30px 0;
     border: none;
-    border-top: 2px solid #e0e0e0;
+    border-top: 2px solid var(--background-modifier-border);
 }
 
 span,p,a {
@@ -78,17 +138,17 @@ ul>li {
 }
 
 ul>li::marker {
-    color: #854b00
+    color: var(--text-on-accent);
 }
 
 a {
-    color: #007994;
+    color: var(--interactive-normal);
     text-decoration: underline;
 }
 
 .nonlink,
 .nonlink>a {
-    color: #000000;
+    color: var(--text-normal);
     text-decoration: none;
 }
 
@@ -107,6 +167,7 @@ h1,h2,h3,em,span,p,a,select,input,.err,#errs>* {
     font-size: 18px;
     display: inline-block;
     margin: 0 5px 0 0;
+    color: var(--text-normal);
 }
 
 #sorter select {
@@ -117,12 +178,12 @@ h1,h2,h3,em,span,p,a,select,input,.err,#errs>* {
     font-weight: bold;
     width: fit-content;
     outline: 0;
-    color: #000000;
+    color: var(--text-normal);
 }
 
 #sorter select:hover {
    cursor: pointer; 
-   color: #000000;
+   color: var(--text-normal);
 }
 
 
@@ -136,10 +197,10 @@ h1,h2,h3,em,span,p,a,select,input,.err,#errs>* {
     padding: 8px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: #000000;
+    background: var(--text-normal);
     --_m: 
-      conic-gradient(#0000 10%,#000),
-      linear-gradient(#000 0 0) content-box;
+      conic-gradient(var(--text-normal) 10%,var(--text-normal)),
+      linear-gradient(var(--text-normal) 0 0) content-box;
     -webkit-mask: var(--_m);
             mask: var(--_m);
     -webkit-mask-composite: source-out;
@@ -204,17 +265,17 @@ body.onerror #loadError {
 }
 
 .category>.subject {
-    background-color: #e8e8e8;
+    background-color: var(--background-secondary);
     border-radius: 12px;
     padding: 15px 40px 12px 24px;
     position: relative;
     text-decoration: none;
     display: block;
-    color: #000000;
+    color: var(--text-normal);
 }
 
 .category>.subject:hover {
-    background-color: #d4d4d4;
+    background-color: var(--background-secondary-alt);
     cursor: pointer;
 }
 
@@ -228,6 +289,10 @@ body.onerror #loadError {
     right: 15px;
     top: 0;
     bottom: 0;
+}
+
+.theme-dark .category>.subject::after {
+    filter: invert(94%) sepia(11%) saturate(664%) hue-rotate(321deg) brightness(116%) contrast(94%);
 }
 
 .category>.subject:not(:last-child) {
@@ -249,7 +314,7 @@ body.onerror #loadError {
 .category>.subject .flair {
     display: inline-block;
     font-size: 16px;
-    background-color: #cfcfcf;
+    background-color: var(--background-primary-alt);
     padding: 3px 8px;
     border-radius: 8px;
     font-weight: bold;
@@ -257,11 +322,11 @@ body.onerror #loadError {
 }
 
 .category>.subject .flair[data-flaircolour="yellow"] {
-    background-color: #d2ce85;
+    background-color: var(--flair-yellow);
 }
 
 .category>.subject .flair[data-flaircolour="red"] {
-    background-color: #e2a1a1;
+    background-color: var(--flair-red);
 }
 
 
@@ -270,7 +335,7 @@ body.onerror #loadError {
 
 #files>.item {
     box-sizing: border-box;
-    background-color: #e8e8e8;
+    background-color: var(--background-secondary);
     display: inline-block;
     width: 100%;
     margin: 0 0 13px 0;
@@ -293,7 +358,7 @@ body.onerror #loadError {
 }
 
 #files>.item:hover {
-    background-color: #d4d4d4;
+    background-color: var(--background-secondary-alt);
     cursor: pointer;
 }
 
@@ -425,22 +490,22 @@ footer #bottomFooter>* {
 }
 
 footer #bottomFooter #footerBrand {
-    color: #000000;
+    color: var(--text-normal);
     text-decoration: none;
 }
 
 footer #bottomFooter>* >a:not(#footerBrand) {
     font-size: 18px;
-    color: #a9a9a9;
+    color: var(--text-faint);
 }
 
 footer #bottomFooter>* >a:not(#footerBrand):hover {
-    color: #707070;
+    color: var(--text-muted);
     cursor: pointer;
 }
 
 footer #bottomFooter>* >a.disabled:not(#footerBrand) {
-    color: #383838;
+    color: var(--text-normal);
     cursor: not-allowed;
     text-decoration: none;
 }
@@ -454,6 +519,7 @@ footer #bottomFooter>*:not(footer #bottomFooter>*:first-child)::before {
     display: inline-block;
     margin-right: 10px;
     font-weight: bold;
+    color: var(--text-faint);
 }
 
 @media screen and (max-width: 530px) {
