@@ -160,6 +160,10 @@ a {
     text-decoration: none;
 }
 
+p,span {
+    color: var(--text-normal);
+}
+
 h1,h2,h3,em,span,p,a,select,input,.err,#errs>* {
     font-family: 'Avenir', 'Avenir Next', 'Lato', sans-serif;
 }
@@ -466,17 +470,20 @@ body.onerror #loadError {
 
 .button[data-btncolour="yellow"] {
     background-color: #e39047;
-    color: #FFFFFF
 }
 
 .button[data-btncolour="blue"] {
     background-color: #4B4376;
-    color: #FFFFFF
 }
 
 .button[data-btncolour="red"] {
     background-color: #AE445A;
-    color: #FFFFFF
+}
+
+.button[data-btncolour="yellow"]>p,
+.button[data-btncolour="blue"]>p,
+.button[data-btncolour="red"]>p {
+    color: #FFFFFF !important;
 }
 
 .button>p {
