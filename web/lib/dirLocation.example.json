@@ -1,0 +1,17 @@
+[
+    {
+        "type": "file",
+        "filetype": "pdf",
+        "name": "File name",
+        "size": "1.0 MB",
+        "date": "13 Sep 2023",
+        "source": "/file.pdf"
+    },
+    {
+        "type": "directory",
+        "name": "Folder name",
+        "content": [
+
+        ]
+    }
+]
